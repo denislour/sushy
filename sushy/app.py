@@ -1,4 +1,5 @@
 from flask import Flask
+from sushy.blueprints.page import page
 
 
 def create_app():
@@ -17,13 +18,7 @@ def create_app():
     # Override config value from sushy/instance/settings.py
     app.config.from_pyfile('settings.py', silent=True)
 
-    @app.route("/")
-    def index():
-        """
-            Render a Hello World response.
-
-            :return: Flask response
-        """
-        return 'Hello World!'
+    # Register blueprints
+    app.register_blueprint(page)
 
     return app
