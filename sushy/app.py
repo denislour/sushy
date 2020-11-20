@@ -1,12 +1,11 @@
 from flask import Flask
 from sushy.blueprints.page import page
+from sushy.extensions import debug_toolbar
 
 
 def create_app(settings_override=None):
     """
         Create a Flask application using the app factory pattern.
-
-        :return: Flask app
     """
 
     # Enable instance's flag to using the config files in instance directory
@@ -24,4 +23,15 @@ def create_app(settings_override=None):
     # Register blueprints
     app.register_blueprint(page)
 
+    # Register extentions
+    extensions(app)
+
     return app
+
+
+def extensions(app):
+    """
+        Register the extentions for Flask application
+    """
+
+    debug_toolbar.init_app(app)

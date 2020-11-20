@@ -5,14 +5,14 @@ page = Blueprint('page', __name__, template_folder='templates')
 
 @page.route('/')
 def home():
-    return render_template('page/home.j2')
+    return render_template('page/home.jj')
 
 
 @page.route('/terms')
 def terms():
-    return render_template('page/terms.j2')
+    return render_template('page/terms.jj')
 
 
 @page.route('/privacy')
 def privacy():
-    return render_template('page/privacy.j2')
+    return render_template('page/privacy.jj')
