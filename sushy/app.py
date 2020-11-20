@@ -1,6 +1,6 @@
 from flask import Flask
-from sushy.blueprints.page import page
-from sushy.extensions import debug_toolbar
+from sushy.blueprints.page import page, contact
+from sushy.extensions import debug_toolbar, mail
 
 
 def create_app(settings_override=None):
@@ -21,6 +21,7 @@ def create_app(settings_override=None):
         app.config.update(settings_override)
 
     # Register blueprints
+    app.register_blueprint(contact)
     app.register_blueprint(page)
 
     # Register extentions
@@ -35,3 +36,6 @@ def extensions(app):
     """
 
     debug_toolbar.init_app(app)
+    mail.init_app(app)
+
+    return None
