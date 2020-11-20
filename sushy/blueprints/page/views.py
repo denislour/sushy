@@ -5,7 +5,7 @@ page = Blueprint('page', __name__, template_folder='templates')
 
 @page.route('/')
 def home():
-    return render_template('page/home.jj')
+    return render_template('page/home.jinja')
 
 
 @page.route('/terms')
