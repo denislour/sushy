@@ -10,7 +10,7 @@ def home():
 
 @page.route('/terms')
 def terms():
-    return render_template('page/terms.jj')
+    return render_template('page/terms.jinja2')
 
 
 @page.route('/privacy')
