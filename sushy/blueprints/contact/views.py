@@ -3,9 +3,9 @@ from flask import Blueprint, flash, redirect, request, url_for, render_template
 from sushy.blueprints.contact.forms import ContactForm
 
 contact = Blueprint('contact', __name__, template_folder='templates')
-contact.route('/contact', methods=['POST', 'GET'])
 
 
+@contact.route('/contact', methods=['POST', 'GET'])
 def index():
     form = ContactForm()
     if form.validate_on_submit():
@@ -17,4 +17,4 @@ def index():
         )
         flash('Thanks, expect a response shortly.', 'success')
         return redirect(url_for('contact.index'))
-    return render_template('contact.index.j2')
+    return render_template('contact/index.j2', form=form)
