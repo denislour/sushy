@@ -1,5 +1,6 @@
 from flask import Flask
-from sushy.blueprints.page import page, contact
+from sushy.blueprints.page import page
+from sushy.blueprints.contact import contact
 from sushy.extensions import debug_toolbar, mail
 
 
