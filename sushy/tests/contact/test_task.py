@@ -1,5 +1,5 @@
 from sushy.extensions import mail
-from sushy.blueprints.contact.task import deliver_contact_email
+from sushy.blueprints.contact.tasks import deliver_contact_email
 
 
 class TestTask(object):

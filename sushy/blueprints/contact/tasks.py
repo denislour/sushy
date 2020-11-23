@@ -7,7 +7,7 @@ celery = create_celery_app()
 @celery.task()
 def deliver_contact_email(email, message):
     """
-    Send a contact e-mail.
+        Send a contact e-mail.
     """
     ctx = {'email': email, 'message': message}
 

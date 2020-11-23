@@ -1,4 +1,4 @@
-FROM python:3.5-slim
+FROM python:3.7-slim
 MAINTAINER Jake V
 
 ENV INSTALL_PATH /sushy
@@ -7,6 +7,7 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
 COPY requirements.txt requirements.txt
+RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 COPY . .

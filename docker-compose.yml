@@ -1,7 +1,15 @@
 version: '2'
 
 services:
-  website:
+  redis:
+    image: 'redis:3.0-alpine'
+    command: redis-server --requirepass devpassword
+    volumes:
+      - 'redis:/var/lib/redis/data'
+    ports:
+      - '6379:6379'
+
+  web:
     build: .
     command: > 
       gunicorn -b 0.0.0.0:8000 
@@ -14,3 +22,14 @@ services:
       - '.:/sushy'
     ports:
       - '8000:8000'
+
+  celery:
+    build: .
+    command: celery -A sushy.blueprints.contact.tasks worker --loglevel=INFO
+    env_file:
+      - '.env'
+    volumes:
+      - '.:/sushy'
+
+volumes:
+  redis:
